@@ -1,0 +1,136 @@
+{
+    "id": "base_trophies",
+    "name": "Base Trophies",
+    "trophies": [
+        {
+            "id": "trophy_loosecannon",
+            "name": {
+                "en": "Loose Cannon",
+                "de": "Tickende Zeitbombe"
+            },
+            "desc": {
+                "en": "Likely to end up on the news.",
+                "de": "Wird wahrscheinlich in den Nachrichten landen."
+            },
+            "requirements": [
+                {
+                    "type": "card_proportion",
+                    "flags": ["v", "t"],
+                    "winning": false,
+                    "percent": 15
+                }
+            ]
+        },
+        {
+            "id": "trophy_gross",
+            "name": {
+                "en": "Gross Person",
+                "de": "Bruttoperson"
+            },
+            "desc": {
+                "en": "What is wrong with you?!",
+                "de": "Was ist los mit dir?!"
+            },
+            "requirements": [
+                {
+                    "type": "card_proportion",
+                    "flags": ["g"],
+                    "winning": false,
+                    "percent": 15
+                }
+            ]
+        },
+        {
+            "id": "trophy_whatCost",
+            "name": {
+                "en": "Lost Everything",
+                "de": "Alles verloren"
+            },
+            "desc": {
+                "en": "You didn't win a single round. Great job!",
+                "de": "Du hast keine einzige Runde gewonnen. Toll gemacht!"
+            },
+            "requirements": [
+                {
+                    "type": "win_proportion",
+                    "percent": 0,
+                    "maximum": true,
+                    "inclusive": true
+                }
+            ]
+        },
+        {
+            "id": "trophy_lost_to_bot",
+            "name": {
+                "en": "Obsolete",
+                "de": "Veraltet"
+            },
+            "desc": {
+                "en": "You lost to a bot.\nWait, really?",
+                "de": "Du hast gegen einen Bot verloren.\nWarte mal, wirklich?"
+            },
+            "requirements": [
+                {
+                    "type": "lost_to_bot"
+                }
+            ]
+        },
+        {
+            "id": "trophy_cogdis",
+            "name": {
+                "en": "Cognitive Dissonance"
+            },
+            "desc": {
+                "en": "Express your crippling moral ambivalence."
+            },
+            "requirements": [
+                {
+                    "type": "any",
+                    "requirements": [
+                        {
+                            "type": "all",
+                            "requirements": [
+                                {
+                                    "type": "card_proportion",
+                                    "percent": 6,
+                                    "flags": ["hp !nh !lgbt", "as !nh !lgbt"]
+                                },
+                                {
+                                    "type": "card_proportion",
+                                    "percent": 6,
+                                    "flags": ["lgbt !hp !as", "nh !hp !as"]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "trophy_cardCollector",
+            "name": {
+                "en": "Collected All Cards"
+            },
+            "desc": {
+                "en": "Amazing collection!"
+            },
+            "requirements": [
+                {
+                    "type": "card_proportion",
+                    "flags": ["re"],
+                    "percent": 10
+                },
+                {
+                    "type": "card_proportion",
+                    "flags": ["as", "ra"],
+                    "percent": 10
+                },
+                {
+                    "type": "card_proportion",
+                    "flags": ["ic", "pd", "hp"],
+                    "percent": 10
+                }
+            ]
+        }
+    ]
+}
