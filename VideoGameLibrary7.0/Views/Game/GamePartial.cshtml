@@ -1,0 +1,64 @@
+﻿@model Game
+
+<div>
+    <img src="@Model.ImageLink" class="card-img-top game-cover-art" alt="@Model.Title" />
+    <div class="card-body">
+        <h4 class="card-title">@Model.Title</h4>
+        <table class="table">
+            <tr>
+                <td>ID</td>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>@Model.Platform</td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td>@Model.Genre</td>
+            </tr>
+            <tr>
+                <td>ESRB</td>
+                <td>@Model.ESRB</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>@Model.Year</td>
+            </tr>
+            @if (Model.LoanDate.HasValue)
+            {
+                <tr>
+                    <td colspan="2">
+                        <p class="loaned">Loaned to @Model.LoanStatus on 
+                        @Model.LoanDate.Value.ToShortDateString()</p>
+                        <form asp-controller="Game" asp-action="ReturnGame" asp-route-id="@Model.Id" method="post">
+                            <input type="text" value="@Model.Title" hidden name="Title" />
+                            <button type="submit" class="btn btn-warning">Return</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            else { 
+                <tr>
+                    <td colspan="2">
+                        <form asp-controller="Game" asp-action="LoanTo" asp-route-id="@Model.Id" method="post">
+                        <div>Loan Game To...</div>
+                        <input id="LoanToBox" name="LoanToBox" type="text" placeholder="DankMagicanLord etc." value="" />
+                        <button type="submit" class="btn btn-success">Loan Game</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2">
+                    <form asp-controller="Game" asp-action="UpdateGamePage" asp-route-id="@Model.Id" method="post">
+                        <button class="btn btn-warning" type="submit">Update Game</button>
+                    </form>
+                    <form asp-controller="Game" asp-action="DeleteGame" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-warning">Delete Game</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+</div>
+</div>

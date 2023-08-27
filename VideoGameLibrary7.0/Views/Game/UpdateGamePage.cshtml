@@ -1,0 +1,29 @@
+﻿@model Game
+
+<div class="text-center">
+    <h3>Update @Model.Title</h3>
+    <form asp-controller="Game" asp-action="UpdateGame" method="post">
+        <div>Game Title</div>
+        <input id="TitleBox" name="TitleBox" type="text" value="@Model.Title" />
+
+        <div>Platform</div>
+        <input id="PlatformBox" name="PlatformBox" value="@Model.Platform" />
+
+        <div>Genre</div>
+        <input id="GenreBox" name="GenreBox" type="text" value="@Model.Genre" />
+
+        <div>ESRB Rating</div>
+        <input id="ESRBBox" name="ESRBBox" type="text" value="@Model.ESRB" />
+
+        <div>Year of Release</div>
+        <input id="YearBox" name="YearBox" type="text" value="@Model.Year" />
+
+        <div>Paste a link to Cover Art</div>
+        <input id="ImageLinkBox" name="ImageLinkBox" type="text" value="@Model.ImageLink" />
+
+        <div>Loan Game To...</div>
+        <input id="LoanBox" name="LoanBox" type="text" value="@Model.LoanStatus" />
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>

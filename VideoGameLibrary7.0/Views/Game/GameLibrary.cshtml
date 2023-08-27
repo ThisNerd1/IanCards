@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Game>
+
+
+<div class="text-center">
+    <form asp-controller="Game" asp-action="SearchGame" method="post">
+        <input type="text" id="txtSearch" name="txtSearch" placeholder="Search for a game"/>
+        <button type="submit" class="btn btn-success">Search</button>
+    </form>
+    <form asp-controller="Game" asp-action="FilterCollection" method="post">
+        <select name="FilterByPlatform" id="FilterByPlatform">
+            <option name="AnyPlatform" id="AnyPlatform">Any Platform</option>
+            <option name="XboxOne" id="XboxOne">Xbox One</option>
+            <option name="XboxSeriesX|S" id="XboxSeriesX|S">Xbox Series X|S</option>
+            <option name="Xbox360" id="Xbox360">Xbox 360</option>
+            <option name="PS5" id="PS5">PS5</option>
+            <option name="PS4" id="PS4">PS4</option>
+            <option name="PS3" id="PS3">PS3</option>
+            <option name="PS2" id="PS2">PS2</option>
+            <option name="PC" id="PC">PC</option>
+            <option name="Mobile" id="Mobile">Mobile Phone</option>
+            <option name="Switch" id="Switch">Nintendo Switch</option>
+            <option name="Wii" id="Wii">Nintendo Wii</option>
+        </select>
+        <select name="FilterByRating" id="FilterByRating">
+            <option name="AnyRating" id="AnyRating">Any Rating</option>
+            <option name="Everyone" id="Everyone">Everyone</option>
+            <option name="Everyone10" id="Everyone10">Everyone 10+</option>
+            <option name="Teen" id="Teen">Teen</option>
+            <option name="Mature" id="Mature">Mature</option>
+            <option name="AdultsOnly" id="AdultsOnly">Adults Only</option>
+            <option name="RatingPending" id="RatingPending">RatingPending</option>
+        </select>
+        <select name="FilterByGenre" id="FilterByGenre">
+            <option name="AnyGenre" id="AnyGenre">Any Genre</option>
+            <option name="Action" id="Action">Action</option>
+            <option name="Adventure" id="Adventure">Adventure</option>
+            <option name="Fighting" id="Fighting">Fighting</option>
+            <option name="Survival" id="Survival">Survival</option>
+            <option name="Horror" id="Horror">Horror</option>
+            <option name="BeatUp" id="BeatUp">Beat 'em up'</option>
+            <option name="Puzzle" id="Puzzle">Puzzle</option>
+            <option name="RPG" id="RPG">RPG</option>
+            <option name="Simulation" id="Simulation">Simulation</option>
+            <option name="Strategy" id="Strategy">Strategy</option>
+            <option name="Sandbox" id="Sandbox">Sandbox</option>
+            <option name="Sports" id="Sports">Sports</option>
+            <option name="Racing" id="Racing">Racing</option>
+            <option name="MMO" id="MMO">MMO</option>
+            <option name="Party" id="Party">Party</option>
+            <option name="Trivia" id="Trivia">Trivia</option>
+            <option name="Card" id="Card">Card</option>
+            <option name="Fantasy" id="Fantasy">Fantasy</option>
+        </select>
+        <button type="submit" class="btn btn-success">Filter</button>
+    </form>
+</div>
+
+<div id="padding-bot"class="display-4 text-center info">
+    @Model.Count() game(s) found:
+</div>
+<div class="row">
+    @foreach (Game game in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4 text-center mb-3">
+
+            <partial name="GamePartial.cshtml" model="game" />
+        </div>
+    }
+</div>
+
+<div class="text-center">
+<h3>Add a game to your collection</h3>
+<form asp-controller="Game" asp-action="AddGame" method="post">
+    <div>Game Title</div>
+    <input id="TitleBox" name="TitleBox" placeholder="Minecraft, Tetris, etc." type="text" value="" />
+
+    <div>Platform</div>
+    <input id="PlatformBox" name="PlatformBox" type="text" placeholder="Xbox One, PC, etc." value="" />
+
+    <div>Genre</div>
+    <input id="GenreBox" name="GenreBox" type="text" placeholder="Action, Shooter, etc." value="" />
+
+    <div>ESRB Rating</div>
+    <input id="ESRBBox" name="ESRBBox" type="text" placeholder="E, T, MA, etc." value="" />
+
+    <div>Year of Release</div>
+    <input id="YearBox" name="YearBox" type="text" placeholder="i.e 2011" value="" />
+
+    <div>Paste a link to Cover Art</div>
+    <input id="ImageLinkBox" name="ImageLinkBox" type="text" placeholder="www.imagelink.com" value="" />
+
+    <div>Loan Game To...</div>
+    <input id="LoanBox" name="LoanBox" type="text" placeholder="DankMagicanLord etc." value="" />
+
+    <button type="submit" class="btn btn-success">Add Game</button>
+</form>
+</div>
