@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using VideoGameLibrary_PartOne.Models;
 
-namespace VideoGameLibrary_PartOne.Controllers
+namespace VideoGameLibrary7._0.Controllers
 {
     public class HomeController : Controller
     {

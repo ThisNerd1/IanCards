@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VideoGameLibrary_PartOne.Models;
 
-namespace VideoGameLibrary_PartOne.Data
+namespace VideoGameLibrary7._0.Data
 {
     public class GameContext : DbContext
     {

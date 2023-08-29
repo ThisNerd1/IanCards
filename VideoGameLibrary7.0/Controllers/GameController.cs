@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VideoGameLibrary_PartOne.Interfaces;
-using VideoGameLibrary_PartOne.Data;
 using VideoGameLibrary_PartOne.Models;
+using VideoGameLibrary7._0.Interfaces;
 
-namespace VideoGameLibrary_PartOne.Controllers
+namespace VideoGameLibrary7._0.Controllers
 {
     public class GameController : Controller
     {

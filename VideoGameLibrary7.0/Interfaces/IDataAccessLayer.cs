@@ -1,7 +1,6 @@
 ﻿using VideoGameLibrary_PartOne.Models;
 
-
-namespace VideoGameLibrary_PartOne.Interfaces
+namespace VideoGameLibrary7._0.Interfaces
 
 {
     public interface IDataAccessLayer

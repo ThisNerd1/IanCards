@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\VideoGameLibrary7.0.props" />
+</Project>

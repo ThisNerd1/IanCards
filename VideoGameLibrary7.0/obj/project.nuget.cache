@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QryjxTPuPbE48x2WQA9TEza7snSRnye1GWuI2SZ/PPcCuRcaoeKWTEhxNfNwPVbv6TECWLMhzR/0+ZUIwORfFA==",
+  "dgSpecHash": "AKIsBv3oZHNv2Ajaxc44gn1b+JFXgRAN+HWCekS03DKdrc+4MD4cHH8Iem/XvTU55B6mHEoJPZbBLje/utV0GQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jerem\\OneDrive - Neumont College of Computer Science\\Neumont Work\\Third Year\\Projects in Existing Code\\VideoGameLibrary7.0\\VideoGameLibrary7.0.csproj",
+  "projectFilePath": "C:\\Users\\jerem\\Documents\\GitHub\\IanCards\\VideoGameLibrary7.0\\VideoGameLibrary7.0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jerem\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

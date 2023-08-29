@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using VideoGameLibrary_PartOne.Interfaces;
-using VideoGameLibrary_PartOne.Models;
+﻿using VideoGameLibrary_PartOne.Models;
+using VideoGameLibrary7._0.Interfaces;
 
-namespace VideoGameLibrary_PartOne.Data
+namespace VideoGameLibrary7._0.Data
 {
     public class GameListDAL : IDataAccessLayer
     {
