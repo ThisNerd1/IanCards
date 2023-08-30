@@ -51,22 +51,22 @@
                 <tr>
                     <td colspan="2">
                         <form asp-controller="Game" asp-action="LoanTo" asp-route-id="@Model.Id" method="post">
-                        <div>Loan Game To...</div>
+                        <div>Take a Loan</div>
                         <button type="submit" class="btn btn-success">Loan Game</button>
                         </form>
                     </td>
                 </tr>
-            }
-            <tr>
-                <td colspan="2">
-                    <form asp-controller="Game" asp-action="UpdateGamePage" asp-route-id="@Model.Id" method="post">
-                        <button class="btn btn-warning" type="submit">Update Game</button>
-                    </form>
-                    <form asp-controller="Game" asp-action="DeleteGame" asp-route-id="@Model.Id" method="post">
-                        <button type="submit" class="btn btn-warning">Delete Game</button>
-                    </form>
-                </td>
-            </tr>
+            } 
+                <tr>
+                    <td colspan="2">
+                        <form asp-controller="Game" asp-action="UpdateGamePage" asp-route-id="@Model.Id" method="post">
+                            <button class="btn btn-warning" type="submit">Update Game</button>
+                        </form>
+                        <form asp-controller="Game" asp-action="DeleteGame" asp-route-id="@Model.Id" method="post">
+                            <button type="submit" class="btn btn-warning">Delete Game</button>
+                        </form>
+                    </td>
+                </tr>
         </table>
 </div>
 </div>

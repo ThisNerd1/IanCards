@@ -75,7 +75,7 @@ namespace VideoGameLibrary7._0.Controllers
             
             game = new Game(id, Request.Form["TitleBox"], Request.Form["PlatformBox"],
                 Request.Form["GenreBox"], Request.Form["ESRBBox"], int.Parse(Request.Form["YearBox"]),
-                Request.Form["ImageLinkBox"], Request.Form["LoanBox"], DateTime.Now);
+                Request.Form["ImageLinkBox"]);
             
             if (ModelState.IsValid)
             {
@@ -87,6 +87,11 @@ namespace VideoGameLibrary7._0.Controllers
 
         public IActionResult DeleteGame(int? id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null || dal.GetUser(userId).IsAdmin == false)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
             dal.DeleteGame(id);
             return View("GameLibrary", dal.GetGames());
         }
@@ -104,6 +109,11 @@ namespace VideoGameLibrary7._0.Controllers
 
         public IActionResult UpdateGamePage(int? id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null || dal.GetUser(userId).IsAdmin == false)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
             return View("UpdateGamePage", dal.GetGame(id));
         }
 
