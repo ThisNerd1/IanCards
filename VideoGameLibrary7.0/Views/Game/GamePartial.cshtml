@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using VideoGameLibrary7._0.Areas.Identity.Data
+@inject SignInManager<GameUser> SignInManager
+@inject UserManager<GameUser> UserManager
 @model Game
 
 <div>

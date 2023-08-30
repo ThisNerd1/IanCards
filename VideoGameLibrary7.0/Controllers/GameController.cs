@@ -17,7 +17,7 @@ namespace VideoGameLibrary7._0.Controllers
         public GameController(IDataAccessLayer indal, GameContext inContext, UserManager<GameUser> userManager)
         {
             dal = indal;
-            this._userManager = userManager;
+            _userManager = userManager;
             if (inContext.GetType() == typeof(GameListDAL))
             {
                 ((GameListDAL)dal).db = inContext;

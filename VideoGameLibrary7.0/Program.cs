@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using VideoGameLibrary7._0.Areas.Identity.Data;
 using VideoGameLibrary7._0.Data;
 using VideoGameLibrary7._0.Interfaces;
 
@@ -14,9 +15,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<IDataAccessLayer, GameListDAL>();
 
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<GameUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<GameContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication();
 
 var app = builder.Build();
 
