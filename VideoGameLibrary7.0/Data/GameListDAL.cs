@@ -1,4 +1,5 @@
 ﻿using VideoGameLibrary_PartOne.Models;
+using VideoGameLibrary7._0.Areas.Identity.Data;
 using VideoGameLibrary7._0.Interfaces;
 
 namespace VideoGameLibrary7._0.Data
@@ -21,14 +22,12 @@ namespace VideoGameLibrary7._0.Data
                 2014, "https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1634144453", "ConJonSilv3r", DateTime.Today)
         };*/
 
-        private GameContext db;
+        public GameContext db;
 
         public GameListDAL(GameContext indb)
         {
             this.db = indb;
         }
-
-
 
         public void AddGame(Game game)
         {
@@ -54,6 +53,11 @@ namespace VideoGameLibrary7._0.Data
             */
         }
 
+        public GameUser GetUser(string userId)
+        {
+            return db.AspNetUsers.FirstOrDefault(user => user.Id == userId);
+        }
+
         public void Loan(int? id, string LoanTo)
         {
             Game foundGame = GetGame(id);
@@ -66,6 +70,21 @@ namespace VideoGameLibrary7._0.Data
                     db.SaveChanges();
                 }
             }
+        }
+
+        public IEnumerable<Game> GetUserGames(string userId)
+        {
+            List<Game> userGames = new List<Game>();
+            var user = GetUser(userId);
+            foreach (var game in db.Games)
+            {
+                if (game.LoanStatus == user.UserName)
+                {
+                    userGames.Add(game);
+                }
+            }
+
+            return userGames;
         }
 
         public void ReturnGame(int? id)

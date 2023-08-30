@@ -1,16 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using VideoGameLibrary_PartOne.Models;
+using VideoGameLibrary7._0.Areas.Identity.Data;
+using VideoGameLibrary7._0.Data;
 using VideoGameLibrary7._0.Interfaces;
 
 namespace VideoGameLibrary7._0.Controllers
 {
     public class GameController : Controller
     {
+        private readonly UserManager<GameUser> _userManager;
+
         IDataAccessLayer dal;
 
-        public GameController(IDataAccessLayer indal)
+        public GameController(IDataAccessLayer indal, GameContext inContext, UserManager<GameUser> userManager)
         {
             dal = indal;
+            this._userManager = userManager;
+            if (inContext.GetType() == typeof(GameListDAL))
+            {
+                ((GameListDAL)dal).db = inContext;
+            }
+        }
+
+        public IActionResult UserLibrary()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
+
+            return View("GameLibrary", dal.GetUserGames(userId));
         }
 
         public IActionResult GameLibrary()
@@ -19,15 +41,19 @@ namespace VideoGameLibrary7._0.Controllers
         }
 
         [HttpPost]
-
         public IActionResult LoanTo(int? id)
         {
-            dal.Loan(id, Request.Form["LoanToBox"]);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
+            var user = dal.GetUser(userId);
+            dal.Loan(id, user.UserName);
             return View("GameLibrary", dal.GetGames());
         }
 
         [HttpPost]
-
         public IActionResult ReturnGame(int? id)
         {
             dal.ReturnGame(id);
