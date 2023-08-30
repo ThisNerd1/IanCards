@@ -36,26 +36,6 @@ namespace VideoGameLibrary7._0.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Games",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    Platform = table.Column<string>(type: "varchar(500)", nullable: false),
-                    Genre = table.Column<string>(type: "varchar(500)", nullable: false),
-                    ESRB = table.Column<string>(type: "varchar(500)", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false),
-                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoanStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoanDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Games", x => x.Id);
-                });
         }
 
         /// <inheritdoc />
@@ -64,8 +44,6 @@ namespace VideoGameLibrary7._0.Migrations
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.DropTable(
-                name: "Games");
         }
     }
 }
