@@ -1,4 +1,7 @@
-﻿@model Game
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Game
 
 <div>
     <img src="@Model.ImageLink" class="card-img-top game-cover-art" alt="@Model.Title" />
@@ -33,7 +36,12 @@
                         @Model.LoanDate.Value.ToShortDateString()</p>
                         <form asp-controller="Game" asp-action="ReturnGame" asp-route-id="@Model.Id" method="post">
                             <input type="text" value="@Model.Title" hidden name="Title" />
-                            <button type="submit" class="btn btn-warning">Return</button>
+                            @{
+                                if (@Model.LoanStatus == @User.Identity.Name)
+                                {
+                                    <button type="submit" class="btn btn-warning">Return</button>
+                                }
+                            }
                         </form>
                     </td>
                 </tr>
@@ -43,7 +51,6 @@
                     <td colspan="2">
                         <form asp-controller="Game" asp-action="LoanTo" asp-route-id="@Model.Id" method="post">
                         <div>Loan Game To...</div>
-                        <input id="LoanToBox" name="LoanToBox" type="text" placeholder="DankMagicanLord etc." value="" />
                         <button type="submit" class="btn btn-success">Loan Game</button>
                         </form>
                     </td>

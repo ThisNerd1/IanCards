@@ -56,27 +56,27 @@ namespace VideoGameLibrary7._0.Controllers
         [HttpPost]
         public IActionResult ReturnGame(int? id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             dal.ReturnGame(id);
-            return View("GameLibrary", dal.GetGames());
+            return View("GameLibrary", dal.GetUserGames(userId));
         }
 
         [HttpPost]
         public IActionResult AddGame()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null || dal.GetUser(userId).IsAdmin == false)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
+
             Game game;
             int id = dal.GetGames().Count() + 1;
-            if (Request.Form["LoanBox"] == "")
-            {
-                game = new Game(id, Request.Form["TitleBox"], Request.Form["PlatformBox"],
-                    Request.Form["GenreBox"], Request.Form["ESRBBox"],
-                    int.Parse(Request.Form["YearBox"]), Request.Form["ImageLinkBox"]);
-            }
-            else
-            {
-                game = new Game(id, Request.Form["TitleBox"], Request.Form["PlatformBox"],
-                    Request.Form["GenreBox"], Request.Form["ESRBBox"], int.Parse(Request.Form["YearBox"]),
-                    Request.Form["ImageLinkBox"], Request.Form["LoanBox"], DateTime.Now);
-            }
+            
+            game = new Game(id, Request.Form["TitleBox"], Request.Form["PlatformBox"],
+                Request.Form["GenreBox"], Request.Form["ESRBBox"], int.Parse(Request.Form["YearBox"]),
+                Request.Form["ImageLinkBox"], Request.Form["LoanBox"], DateTime.Now);
+            
             if (ModelState.IsValid)
             {
                 //dal.DeleteGame(game.Id);
